@@ -1,0 +1,19 @@
+module COUNT:
+input I, R;
+output COUNT: integer;
+loop
+var Count := 0 : integer in
+	abort
+		every immediate I do % attend pas l'arriver d'un signal pour continuer
+			Count := Count+1;
+			emit COUNT(Count)
+		end every
+	when R do
+		Count := 0;
+		emit COUNT(Count)
+	end abort
+end var
+end loop
+end module 
+
+
